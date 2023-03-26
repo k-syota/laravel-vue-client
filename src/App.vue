@@ -1,11 +1,32 @@
 <script setup>
-import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
+import axios from "axios";
+import { RouterLink, RouterView } from "vue-router";
+import HelloWorld from "./components/HelloWorld.vue";
+
+axios
+  .get("http://localhost:8000/api/hello")
+  .then(function (response) {
+    // handle success(axiosの処理が成功した場合に処理させたいことを記述)
+    console.log(response);
+  })
+  .catch(function (error) {
+    // handle error(axiosの処理にエラーが発生した場合に処理させたいことを記述)
+    console.log(error);
+  })
+  .finally(function () {
+    // always executed(axiosの処理結果によらずいつも実行させたい処理を記述)
+  });
 </script>
 
 <template>
   <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
+    <img
+      alt="Vue logo"
+      class="logo"
+      src="@/assets/logo.svg"
+      width="125"
+      height="125"
+    />
 
     <div class="wrapper">
       <HelloWorld msg="You did it!" />
